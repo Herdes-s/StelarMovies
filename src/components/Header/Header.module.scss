@@ -1,0 +1,26 @@
+.header {
+  position: relative;
+  background: url(https://i0.wp.com/segredosdomundo.r7.com/wp-content/uploads/2020/01/super-herois-conheca-os-10-personagens-mais-populares.jpeg?w=800&ssl=1)
+    no-repeat center center/ cover;
+  border-bottom: 2px rgb(196, 24, 24) solid;
+  height: 400px;
+  box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(0, 0, 0) , rgba(0, 0, 0, 0.6));
+  }
+
+  .container {
+    filter: brightness(100%);
+
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+
+    .logo {
+      color: rgb(196, 24, 24);
+    }
+  }
+}
