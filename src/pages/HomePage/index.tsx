@@ -1,13 +1,18 @@
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { Hero } from "../../components/Hero";
+import { ListMovie } from "../../components/ListMovie";
 
 export function HomePage() {
   return (
     <>
       <Header />
-      <Hero serieName={"Batman"} />
-      <Hero serieName={"Spiderman"} />
-      <Hero serieName={"Superman"} />
+      <ListMovie serieName={"Batman"} />
+      <ListMovie serieName={"Spiderman"} />
+      <ListMovie serieName={"Superman"} />
+      <ListMovie serieName={"Flash"} />
+      <ListMovie serieName={"Pokemon"} />
+      <ListMovie serieName={"Dracula"} />
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,29 @@
+@import "../../styles/_variables.sass";
+
+.footer {
+    background: rgb(39, 39, 39);
+    margin-top: 2rem;
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        h3 {
+            font-family: $font-primary;
+            font-size: 2rem;
+            color: rgb(209, 18, 18);
+            
+        }
+        
+        p {
+            color: rgba(194, 194, 194, 0.692);
+        }
+    }
+}

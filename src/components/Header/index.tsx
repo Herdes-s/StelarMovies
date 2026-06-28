@@ -7,6 +7,9 @@ export default function Header() {
       <div className={styles.container}>
         <h1 className={styles.logo}>StelarMovies</h1>
       </div>
+      <div className={styles.container_text}>
+        <p className={styles.text}>Bem-vindo ao StelarMovies</p>
+      </div>
     </header>
   );
 }

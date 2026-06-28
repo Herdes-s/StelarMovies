@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { searchShows } from "../../services/api";
 import type { Show } from "../../@Types/movi";
-import styles from "./Hero.module.scss";
+import styles from "./ListMovie.module.scss";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
@@ -11,7 +11,7 @@ type HeroProps = {
   serieName: string;
 };
 
-export function Hero({ serieName }: HeroProps) {
+export function ListMovie({ serieName }: HeroProps) {
   const [shows, setShows] = useState<Show[]>([]);
   const carrosselRef = useRef<HTMLDivElement | null>(null);
 
