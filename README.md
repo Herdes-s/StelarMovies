@@ -1,32 +1,62 @@
-# React + TypeScript + Vite
+# 🎬 StelarMovies
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Site de um cinema desenvolvido após uma análise de concorrência das plataformas de filmes e series online mais populares e inspirado nelas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 👁️ Visualização
 
-## React Compiler
+![site](./src/assets/image/img_site.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🎯 Objetivo
+Desenvolver uma aplicação utilizando api funcionais aplicando conceitos modernos, codigo limpo e componentes reutilizaveis.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## 🛠️ Tecnologias e Conceitos
+O projeto foi construído utilizando as melhores práticas do front-end:
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+* **React**: Biblioteca principal para a construção da interface modular e baseada em componentes.
+* **TypeScript**: Adicionado para garantir tipagem estática, reduzindo bugs em tempo de desenvolvimento e melhorando a manutenção do código.
+* **CSS Modules & SCSS**: Utilizados em conjunto para estilização escopada, evitando conflitos de classes e permitindo o uso de variáveis e aninhamentos avançados.
+* **Mobile First**: Metodologia de design focada em criar a experiência ideal para telas menores primeiro, expandindo progressivamente para desktop.
+* **Hooks**: Uso de `useState`, `useEffect` e custom hooks para controle de estados globais (como carrinho e busca) e ciclo de vida.
+
+---
+
+## 🔄 Como Rodar o Projeto
+Para executar este projeto localmente, siga os passos abaixo:
+
+1. Clone o repositório:
+  ```bash
+  git clone [https://github.com/Herdes-s/StelarMovies](https://github.com/Herdes-s/StelarMovies)
+  ```
+
+2. Acesse a pasta do projeto:
+  ```Bash
+  cd StelarMovies
+  ```
+
+3. Instale as dependências:
+  ```Bash
+  npm install
+  ```
+
+4. Inicie o servidor de desenvolvimento:
+  ```Bash
+  npm start
+  ```
+
+O projeto abrirá automaticamente no seu navegador no endereço http://localhost:5173.
+
+---
+
+## 🔗 Link de Acesso
+Confira o projeto online: Em andamento...
+
+---
+
+## 👤 Autor
+Desenvolvido por Ernand Soares.
