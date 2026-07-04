@@ -1,18 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import { searchShows } from "../../services/api";
-import type { Show } from "../../@Types/movi";
+import { useRef } from "react";
 import styles from "./ListMovie.module.scss";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import type { Show } from "../../@Types/movi";
 
-type HeroProps = {
-  serieName: string;
-};
+interface ListMovieProps {
+  shows: Show[];
+  title?: string;
+  loading?: boolean;
+}
 
-export function ListMovie({ serieName }: HeroProps) {
-  const [shows, setShows] = useState<Show[]>([]);
+export function ListMovie({
+  shows,
+  title = "Resultados",
+  loading = false,
+}: ListMovieProps) {
   const carrosselRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (direction: "esquerda" | "direita") => {
@@ -28,13 +32,9 @@ export function ListMovie({ serieName }: HeroProps) {
     }
   };
 
-  useEffect(() => {
-    searchShows(serieName).then(setShows);
-  }, [serieName]);
-
   return (
     <div className={styles.list_cards}>
-      <h2>{serieName}</h2>
+      <h2>{title}</h2>
 
       {/* Novo contêiner pai para isolar a estrutura do carrossel */}
       <div className={styles.carrossel_wrapper}>
@@ -46,19 +46,23 @@ export function ListMovie({ serieName }: HeroProps) {
 
         {/* Contêiner que faz o Scroll de fato */}
         <div className={styles.container} ref={carrosselRef}>
-          {shows.map((show) => (
-            <div key={show.id} className={styles.card}>
-              {show.image && (
-                <img
-                  src={show.image.medium}
-                  alt={show.name}
-                  className={styles.image}
-                />
-              )}
-              <p className={styles.name}>{show.name}</p>
-              <p className={styles.stars}>⭐ {show.rating.average ?? "N/A"}</p>
-            </div>
-          ))}
+          {loading && <p>Carregando...</p>}
+          {!loading &&
+            shows.map((show) => (
+              <div key={show.id} className={styles.card}>
+                {show.image && (
+                  <img
+                    src={show.image.medium}
+                    alt={show.name}
+                    className={styles.image}
+                  />
+                )}
+                <p className={styles.name}>{show.name}</p>
+                <p className={styles.stars}>
+                  ⭐ {show.rating.average ?? "N/A"}
+                </p>
+              </div>
+            ))}
         </div>
 
         {/* Seta Direita (Fora do container de scroll) */}
