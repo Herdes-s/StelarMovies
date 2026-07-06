@@ -13,7 +13,7 @@ export function HomePage() {
       <Header />
 
       {batman.error && <p>{batman.error}</p>}
-      <ListMovie title="Bataman" shows={batman.shows} loading={batman.loading} />
+      <ListMovie title="Batman" shows={batman.shows} loading={batman.loading} />
 
       {spiderman.error && <p>{spiderman.error}</p>}
       <ListMovie title="Homen-Aranha" shows={spiderman.shows} loading={spiderman.loading} />

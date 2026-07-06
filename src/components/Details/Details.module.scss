@@ -1,0 +1,114 @@
+@import "../../styles/_variables.sass";
+
+.details {
+  max-width: 1300px;
+  margin: auto;
+
+  .container {
+    position: relative;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .back {
+      color: white;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+
+      &:hover {
+        transform: translateX(-2px) scale(0.98);
+      }
+    }
+
+    .name {
+      color: rgb(196, 24, 24);
+      font-family: $font-primary;
+      margin-bottom: 1rem;
+    }
+
+    .genres {
+      color: white;
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      .genre {
+        font-family: $font-primary;
+        background: rgb(196, 24, 24);
+        padding: 0.25rem 0.5rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .division {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      .side_image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        .image {
+          height: 24rem;
+          border: 1px solid rgb(196, 24, 24);
+        }
+      }
+
+      .side_information {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        color: rgb(196, 196, 196);
+        font-family: $font-primary;
+        width: 90%;
+        margin: auto;
+        
+        .status {
+          margin-bottom: 0.5rem;
+        }
+        
+        .language {
+          margin-bottom: 0.5rem;
+        }
+        
+        .avaliation {
+          margin-bottom: 0.5rem;
+        }
+        
+        .data {
+          margin-bottom: 1rem;
+          
+        }
+        
+        .summary {
+          text-align: justify;
+          margin-bottom: 0.5rem;
+
+          @media (min-width: 768px) {
+            width: 80%;
+        }
+        }
+      }
+    }
+  }
+}

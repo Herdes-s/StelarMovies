@@ -10,8 +10,10 @@ export function useMovi(searchTerm: string = "batman") {
   useEffect(() => {
     if (!searchTerm.trim()) {
       setShows([]);
-      return
+      return;
     }
+
+    const controller = new AbortController();
 
     const timeoutId = setTimeout(() => {
       const fetchShows = async () => {
@@ -20,11 +22,10 @@ export function useMovi(searchTerm: string = "batman") {
 
         try {
           const response = await moviService.getShowsByName(searchTerm);
-          setShows(response.data.map((result: any) => result.show));
-
+          setShows(response.data.map((result) => result.show));
         } catch (err) {
+          if (controller.signal.aborted) return;
           setError("Erro ao buscar séries. Por favor, tente novamente.");
-
         } finally {
           setLoading(false);
         }
@@ -33,6 +34,7 @@ export function useMovi(searchTerm: string = "batman") {
     }, 500);
 
     return () => clearTimeout(timeoutId);
+    controller.abort();
   }, [searchTerm]);
 
   return { shows, loading, error };

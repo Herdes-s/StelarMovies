@@ -5,6 +5,7 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import type { Show } from "../../@Types/movi";
+import { useNavigate } from "react-router-dom";
 
 interface ListMovieProps {
   shows: Show[];
@@ -18,6 +19,8 @@ export function ListMovie({
   loading = false,
 }: ListMovieProps) {
   const carrosselRef = useRef<HTMLDivElement | null>(null);
+
+  const navigate = useNavigate();
 
   const scroll = (direction: "esquerda" | "direita") => {
     if (carrosselRef.current) {
@@ -46,21 +49,25 @@ export function ListMovie({
 
         {/* Contêiner que faz o Scroll de fato */}
         <div className={styles.container} ref={carrosselRef}>
-          {loading && <p>Carregando...</p>}
+          {loading && <p style={{textAlign: "center", color: "white"}}>Carregando...</p>}
           {!loading &&
             shows.map((show) => (
-              <div key={show.id} className={styles.card}>
+              <div key={show.id} className={styles.card} onClick={() => navigate(`/${show.id}`)}>
                 {show.image && (
-                  <img
-                    src={show.image.medium}
-                    alt={show.name}
-                    className={styles.image}
-                  />
+                  <div className={styles.container_image}>
+                    <img
+                      src={show.image.medium}
+                      alt={show.name}
+                      className={styles.image}
+                    />
+                  </div>
                 )}
-                <p className={styles.name}>{show.name}</p>
-                <p className={styles.stars}>
-                  ⭐ {show.rating.average ?? "N/A"}
-                </p>
+                <div className={styles.container_info}>
+                  <p className={styles.name}>{show.name}</p>
+                  <p className={styles.stars}>
+                    ⭐ {show.rating.average ?? "N/A"}
+                  </p>
+                </div>
               </div>
             ))}
         </div>
