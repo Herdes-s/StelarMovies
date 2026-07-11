@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { moviService } from "../../services/moviService";
 import { useEffect, useState } from "react";
 import type { Show } from "../../@Types/movi";
 import DOMPurify from "dompurify";
 
 import styles from "./Details.module.scss";
-import { IoChevronBack } from "react-icons/io5";
+import EpisodesList from "./EpisodesList";
 
 export default function Details() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [movi, setmovi] = useState<Show>();
   const [loading, setLoading] = useState(true);
@@ -19,9 +18,9 @@ export default function Details() {
       try {
         setLoading(true);
 
-        const response = await moviService.getShowById(Number(id));
-        setmovi(response.data);
-        console.log(response.data);
+        const responseDetails = await moviService.getShowById(Number(id));
+        setmovi(responseDetails.data);
+        console.log(responseDetails.data);
       } catch (error) {
         console.error("Error ao buscar o filme: ", error);
       } finally {
@@ -33,42 +32,59 @@ export default function Details() {
     }
   }, [id]);
 
-  if (loading) return <p className={styles.loading}>Carregando detalhes do filme...</p>;
+  if (loading)
+    return <p className={styles.loading}>Carregando detalhes do filme...</p>;
   if (!movi) return <p className={styles.movi}>Filme não encontrado.</p>;
-  
+
   return (
     <div className={styles.details}>
       <div className={styles.container}>
-        <button className={styles.back} onClick={() => navigate(-1)}><IoChevronBack /> Voltar</button>
-        <h1 className={styles.name}>{movi.name}</h1>
-        <p className={styles.genres}>
-          {movi.genres.map((genre) => (
-            <p className={styles.genre}>{genre}</p>
-          ))}
-        </p>
-        <div className={styles.division}>
-          <div className={styles.side_image}>
+        <div className={styles.container_image}>
+          <div className={styles.overlay}>
+            <h1 className={styles.name}>{movi.name}</h1>
+          </div>
+          <div className={styles.container_banner}>
             <img
-              className={styles.image}
+              className={styles.banner}
               src={movi.image?.original}
               alt={movi.name}
             />
           </div>
-          <div className={styles.side_information}>
-            <p className={styles.status}>Status: {movi.status}</p>
-            <p className={styles.language}>Language: {movi.language}</p>
-            <p className={styles.avaliation}>
-              Avaliation: ⭐{movi.rating.average}
+          <img
+            className={styles.image}
+            src={movi.image?.original}
+            alt={movi.name}
+          />
+        </div>
+        <div className={styles.division}>
+          <div className={styles.left}>
+            <h1 className={styles.name}>{movi.name}</h1>
+            <p className={styles.data}>
+              {movi.premiered ? new Date(movi.premiered).getFullYear() : "—"}
             </p>
-              <p className={styles.data}>Date: {(movi.premiered) }</p>
-            <div className={styles.summary}>
-              <p>Description:</p>
-              <div dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(movi.summary ?? "")
-              }} />
-            </div>
+            <div
+              className={styles.summary}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(movi.summary ?? ""),
+              }}
+            />
+          </div>
+          <div className={styles.right}>
+            <p className={styles.genres}>
+              <span>Categoris:</span> {movi.genres.join(", ")}
+            </p>
+            <p className={styles.avaliation}>
+              <span>Avaliation:</span> ⭐{movi.rating.average}
+            </p>
+            <p className={styles.language}>
+              <span>Language:</span> {movi.language}
+            </p>
+            <p className={styles.status}>
+              <span>Status:</span> {movi.status}
+            </p>
           </div>
         </div>
+        <EpisodesList />
       </div>
     </div>
   );

@@ -1,0 +1,33 @@
+@import "../../styles/_variables.sass";
+
+.banner {
+    position: relative;
+    height: 400px;
+    margin: auto;
+    
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 40%, transparent);
+        box-shadow: inset 0 0 12px 12px rgb(15, 15, 15);
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+
+        h1 {
+            color: rgb(209, 28, 28);
+            font-family: $font-primary;
+        }
+        
+        p {
+            color: rgb(255, 255, 255);
+            font-family: $font-primary;
+        }
+    }
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+    }
+}

@@ -1,3 +1,4 @@
+import BannerMovie from "../../components/BannerMovie";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { ListMovie } from "../../components/ListMovie";
@@ -11,6 +12,8 @@ export function HomePage() {
   return (
     <>
       <Header />
+
+      <BannerMovie />
 
       {batman.error && <p>{batman.error}</p>}
       <ListMovie title="Batman" shows={batman.shows} loading={batman.loading} />

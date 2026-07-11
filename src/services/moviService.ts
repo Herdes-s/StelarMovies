@@ -1,4 +1,4 @@
-import type { SearchResult } from "../@Types/movi";
+import type { Episodes, SearchResult } from "../@Types/movi";
 import { apiMovi } from "../config/apiMovi";
 
 export const moviService = {
@@ -12,6 +12,16 @@ export const moviService = {
 
   getShowById: async (id: number) => {
     const data = await apiMovi.get(`shows/${id}`);
+    return data;
+  },
+
+  getShowEpisodes: async (id: number) => {
+    const data = await apiMovi.get<Episodes[]>(`shows/${id}/episodes`);
+    return data;
+  },
+
+  getEpsodes: async (id: number) => {
+    const data = await apiMovi.get(`episodes/${id}`);
     return data;
   },
 };

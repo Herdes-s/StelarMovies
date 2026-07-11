@@ -1,0 +1,48 @@
+@import "../../../styles/_variables.sass";
+
+.cards {
+  width: 100%;
+  padding: 2rem;
+  font-family: $font-primary;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    color: red;
+  }
+
+  .select {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    background: rgb(100, 100, 100);
+  }
+
+  .card_episodes {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    .card_episode {
+      background: rgb(100, 100, 100);
+      border-radius: 1rem;
+      border: 1px solid rgb(100, 100, 100);
+
+      .card_information {
+        padding: 0.5rem;
+
+        .name {
+          font-size: 1rem;
+        }
+      }
+      .image {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+      }
+    }
+  }
+}
