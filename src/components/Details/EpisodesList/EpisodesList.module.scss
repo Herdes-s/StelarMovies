@@ -2,46 +2,86 @@
 
 .cards {
   width: 100%;
-  padding: 2rem;
+  padding-inline: 2rem;
+  padding-top: 2rem;
   font-family: $font-primary;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  .title {
-    margin-bottom: 1rem;
-    color: red;
-  }
+  .header_list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 
-  .select {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 1rem;
-    background: rgb(100, 100, 100);
+    .title {
+      color: rgb(255, 255, 255);
+    }
+
+    .select {
+      color: rgb(255, 255, 255);
+      border: none;
+      background: transparent;
+
+      option {
+        background: rgb(43, 43, 43);
+      }
+    }
   }
 
   .card_episodes {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 0.5rem;
-    overflow-x: auto;
-    scrollbar-width: none;
 
     .card_episode {
-      background: rgb(100, 100, 100);
-      border-radius: 1rem;
-      border: 1px solid rgb(100, 100, 100);
+      margin-bottom: 1rem;
+
+      .image {
+        border-radius: 1rem;
+        width: 100%;
+      }
 
       .card_information {
-        padding: 0.5rem;
+        padding: 1rem 0;
+        color: white;
+
+        .text_initial {
+          margin-bottom: 0.5rem;
+
+          .season_number {
+            font-weight: 900;
+          }
+
+          .number_number {
+            font-weight: 900;
+          }
+        }
 
         .name {
           font-size: 1rem;
+          margin-bottom: 0.5rem;
         }
-      }
-      .image {
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
+
+        .summary {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          color: rgb(168, 168, 168);
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .time,
+        .date {
+          color: rgb(168, 168, 168);
+          font-size: 1rem;
+        }
       }
     }
   }

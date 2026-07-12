@@ -22,12 +22,12 @@ export interface Episodes {
   season: number;
   number: number;
   type: string;
-  airdate: Date;
+  airdate: string;
   airtime: Date;
   airstamp: Date;
   runtime: number;
   rating: { average: null };
   image: {medium: string, original: string};
-  summary: undefined;
+  summary: string;
   links: { self: { href: string; show: { href: string; name: string } } };
 }
